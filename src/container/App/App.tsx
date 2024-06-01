@@ -17,103 +17,76 @@ const App = ()=> {
   
   const [order, setOrder] = useState({Hamburger: [0],Coffee: [0],Cheeseburger: [0],Tea: [0],Fries: [0],Cola: [0],});
 
+  let [price, setPrice] = useState('Order is empty! \n Please add some items!');
+
   const orderCopy = order;
+
   const addCoffee = ()=>{
-    if (order.Coffee.length === 1) {
-      orderCopy.Coffee[0]+=1;
-    }else{
-      orderCopy.Coffee.push(1);
-    }
-    addItem()
+    addItem(order.Coffee.length, orderCopy.Coffee)
   }
   const addCheeseburger = ()=>{
-    if (order.Cheeseburger.length === 1) {
-      orderCopy.Cheeseburger[0]+=1;
-    }else{
-      orderCopy.Cheeseburger.push(1);
-    }
-    addItem()
+    addItem(order.Cheeseburger.length, orderCopy.Cheeseburger)
+
   }
   const addTea = ()=>{
-    if (order.Tea.length === 1) {
-      orderCopy.Tea[0]+=1;
-    }else{
-      orderCopy.Tea.push(1);
-    }
-    addItem()
+    addItem(order.Tea.length, orderCopy.Tea)
   }
   const addFries = ()=>{
-    if (order.Fries.length === 1) {
-      orderCopy.Fries[0]+=1;
-    }else{
-      orderCopy.Fries.push(1);
-    }
-    addItem()
+    addItem(order.Fries.length, orderCopy.Fries)
+
   }
   const addCola = ()=>{
-    if (order.Cola.length === 1) {
-      orderCopy.Cola[0]+=1;
-    }else{
-      orderCopy.Cola.push(1);
-    }
-    addItem()
+    addItem(order.Cola.length, orderCopy.Cola)
+
   }
   const addHamburger = ()=>{
-    if (order.Hamburger.length === 1) {
-      orderCopy.Hamburger[0]+=1;
-    }else{
-      orderCopy.Hamburger.push(1);
-    }
-    addItem()
+    addItem(order.Hamburger.length, orderCopy.Hamburger)
   }
 
-  const addItem = ()=>{
+  const addItem = (num:number,edit: number[])=>{
+    if (num === 1) {
+      edit[0]+=1;
+    }else{
+      edit.push(1);
+    }
     const counterCopy = counter + 1; 
     setCounter(counterCopy);
     setOrder(orderCopy);
+    const priceCopy = 'Total price: ' + String((menu[2].price * order.Cheeseburger[0]) + (menu[5].price * order.Cola[0]) + (menu[4].price * order.Fries[0]) + (menu[3].price * order.Tea[0]) + (menu[1].price * order.Coffee[0]) + (menu[0].price * order.Hamburger[0])) + 'KGS';
+    setPrice(priceCopy)
   }
 
   const hamburgerDelete = ()=>{
-    const counterCopy = counter + 1; 
-    setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Hamburger.splice(orderCopy.Hamburger.length - 1, 1);
-    setOrder(orderCopy);
+    buttonDelete(orderCopy.Hamburger[0]-=1);
   }
   const coffeeDelete = ()=>{
-    const counterCopy = counter + 1; 
-    setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Coffee.splice(orderCopy.Coffee.length - 1, 1);
-    setOrder(orderCopy);
+    buttonDelete(orderCopy.Coffee[0]-=1);
+
   }
   const cheeseburgerDelete = ()=>{
-    const counterCopy = counter + 1; 
-    setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Cheeseburger.splice(orderCopy.Cheeseburger.length - 1, 1);
-    setOrder(orderCopy);
+    buttonDelete(orderCopy.Cheeseburger[0]-=1);
   }
   const teaDelete = ()=>{
-    const counterCopy = counter + 1; 
-    setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Tea.splice(orderCopy.Tea.length - 1, 1);
-    setOrder(orderCopy);
+    buttonDelete(orderCopy.Tea[0]-=1) 
   }
   const friesDelete = ()=>{
-    const counterCopy = counter + 1; 
-    setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Fries.splice(orderCopy.Fries.length - 1, 1);
-    setOrder(orderCopy);
+    buttonDelete(orderCopy.Fries[0]-=1)     
   }
   const colaDelete = ()=>{
+    buttonDelete(orderCopy.Cola[0]-=1) 
+  }
+
+  const buttonDelete = (item:number)=>{
     const counterCopy = counter + 1; 
     setCounter(counterCopy);
-    const orderCopy = order;
-    orderCopy.Cola.splice(orderCopy.Cola.length - 1, 1);
+    item
     setOrder(orderCopy);
+    let priceNum = String((menu[2].price * order.Cheeseburger[0]) + (menu[5].price * order.Cola[0]) + (menu[4].price * order.Fries[0]) + (menu[3].price * order.Tea[0]) + (menu[1].price * order.Coffee[0]) + (menu[0].price * order.Hamburger[0]));
+    let priceCopy = 'Total price: ' + priceNum + 'KGS';
+    if (priceNum === '0') {
+      priceCopy = 'Order is empty! \n Please add some items!' 
+    }
+    setPrice(priceCopy)  
   }
 
   return (
@@ -121,7 +94,7 @@ const App = ()=> {
       <div className="order-details">
         <h2 className='title'>Order details</h2>
         <div className="price">
-          {(menu[2].price * order.Cheeseburger[0]) + (menu[5].price * order.Cola[0]) + (menu[4].price * order.Fries[0]) + (menu[3].price * order.Tea[0]) + (menu[1].price * order.Coffee[0]) + (menu[0].price * order.Hamburger[0])}
+          {price}
         </div>
         <div className="hamburger">
           {order.Hamburger.map((index)=>{
