@@ -5,31 +5,47 @@
   text-align: center;
 }
 
+.delete-button{
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.delete-button:hover{
+  background-color: #000;
+}
+.delete-button:hover .image{
+  color: #fff;
+}
+
 .container{
-  max-width: 1000px;
   padding: 0 15px;
   margin: 0 auto;
   display: flex;
   gap: 20px;
 }
-
-.order-details{
-  width: 400px;
-  border: 1px solid;
-  padding: 10px;
-}
-
-.add-items{
-  border: 1px solid;
+.order-details,.add-items{
   width: 500px;
+  border: 1px solid;
+  border-radius: 20px;
   padding: 10px;
+
 }
+
 
 .items{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .item{
@@ -49,9 +65,16 @@
   text-align: start;
 }
 
-.hamburger{
+.menu-item{
+  margin-left: 50px;
+}
+
+.order-item{
   display: flex;
   gap: 20px;
-  justify-content: center;
   align-items: center;
+}
+
+.price{
+  margin-top: 30px;
 }

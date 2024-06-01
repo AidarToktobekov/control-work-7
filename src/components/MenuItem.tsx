@@ -6,7 +6,7 @@ interface Props{
 
 const MenuItem:React.FC<Props> = ({itemName, quantity, price})=>{
     return(
-        <div className="menu-item">{itemName} - {quantity} - {price}KGS </div>
+        <div className="menu-item">{quantity}) {itemName} | {price}KGS </div>
     )
 }
 

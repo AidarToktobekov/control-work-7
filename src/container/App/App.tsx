@@ -7,12 +7,12 @@ const App = ()=> {
   let [counter, setCounter] = useState(0);
 
   const menu = [
-    {name: 'Hamburger', price: 80, key: 1,},
-    {name: 'Coffee', price: 70, key: 2,},
-    {name: 'Cheeseburger', price: 90, key: 3,},
-    {name: 'Tea', price: 50, key: 4,},
-    {name: 'Fries', price: 45, key: 5,},
-    {name: 'Cola', price: 40, key: 6,},
+    {name: 'Hamburger', price: 80,},
+    {name: 'Coffee', price: 70,},
+    {name: 'Cheeseburger', price: 90,},
+    {name: 'Tea', price: 50,},
+    {name: 'Fries', price: 45,},
+    {name: 'Cola', price: 40,},
   ];
   
   const [order, setOrder] = useState({Hamburger: [0],Coffee: [0],Cheeseburger: [0],Tea: [0],Fries: [0],Cola: [0],});
@@ -93,10 +93,7 @@ const App = ()=> {
     <div className='container'>
       <div className="order-details">
         <h2 className='title'>Order details</h2>
-        <div className="price">
-          {price}
-        </div>
-        <div className="hamburger">
+        <div className="order-item">
           {order.Hamburger.map((index)=>{
             if (index > 0) {
               return(
@@ -107,12 +104,16 @@ const App = ()=> {
           {order.Hamburger.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={hamburgerDelete}>Delete</button>
+                <button className="delete-button"onClick={hamburgerDelete}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </button>
               )
             }
           })}
         </div>
-         <div className="hamburger">
+         <div className="order-item">
           {order.Coffee.map((index)=>{
             if (index > 0) {
               return(
@@ -123,13 +124,15 @@ const App = ()=> {
           {order.Coffee.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={coffeeDelete}>Delete</button>
+                <button className="delete-button" onClick={coffeeDelete}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+              </svg></button>
               )
             }
           })}
         </div>
         
-        <div className="hamburger">
+        <div className="order-item">
           {order.Tea.map((index)=>{
             if (index > 0) {
               return(
@@ -140,12 +143,14 @@ const App = ()=> {
           {order.Tea.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={teaDelete}>Delete</button>
+                <button className="delete-button" onClick={teaDelete}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+              </svg></button>
               )
             }
           })}
         </div>
-        <div className="hamburger">
+        <div className="order-item">
           {order.Fries.map((index)=>{
             if (index > 0) {
               return(
@@ -156,12 +161,14 @@ const App = ()=> {
           {order.Fries.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={friesDelete}>Delete</button>
+                <button className="delete-button" onClick={friesDelete}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+              </svg></button>
               )
             }
           })}
         </div>
-        <div className="hamburger">
+        <div className="order-item">
           {order.Cola.map((index)=>{
             if (index > 0) {
               return(
@@ -172,12 +179,14 @@ const App = ()=> {
           {order.Cola.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={colaDelete}>Delete</button>
+                <button className="delete-button" onClick={colaDelete}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+              </svg></button>
               )
             }
           })}
         </div>
-        <div className="hamburger">
+        <div className="order-item">
           {order.Cheeseburger.map((index)=>{
             if (index > 0) {
               return(
@@ -188,10 +197,15 @@ const App = ()=> {
           {order.Cheeseburger.map((index)=>{
             if (index > 0) {
               return(
-                <button onClick={cheeseburgerDelete}>Delete</button>
+                <button className="delete-button" onClick={cheeseburgerDelete}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='image' color='#000' fill="currentColor"  viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+              </svg></button>
               )
             }
           })}
+        </div>
+        <div className="price">
+          {price}
         </div>
       </div>
       <div className="add-items">
